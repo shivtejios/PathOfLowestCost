@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		FB556BB11EFA03FF00F43CEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB556BB01EFA03FF00F43CEC /* AppDelegate.swift */; };
-		FB556BB31EFA03FF00F43CEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB556BB21EFA03FF00F43CEC /* ViewController.swift */; };
 		FB556BB61EFA03FF00F43CEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB556BB41EFA03FF00F43CEC /* Main.storyboard */; };
 		FB556BB81EFA03FF00F43CEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB556BB71EFA03FF00F43CEC /* Assets.xcassets */; };
 		FB556BBB1EFA03FF00F43CEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB556BB91EFA03FF00F43CEC /* LaunchScreen.storyboard */; };
 		FB556BC61EFA03FF00F43CEC /* PathOfLowestCostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB556BC51EFA03FF00F43CEC /* PathOfLowestCostTests.swift */; };
 		FB556BD11EFA03FF00F43CEC /* PathOfLowestCostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB556BD01EFA03FF00F43CEC /* PathOfLowestCostUITests.swift */; };
+		FB556BDF1EFA046500F43CEC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB556BDE1EFA046500F43CEC /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		FB556BAD1EFA03FF00F43CEC /* PathOfLowestCost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathOfLowestCost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB556BB01EFA03FF00F43CEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB556BB21EFA03FF00F43CEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB556BB51EFA03FF00F43CEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB556BB71EFA03FF00F43CEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB556BBA1EFA03FF00F43CEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		FB556BCC1EFA03FF00F43CEC /* PathOfLowestCostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PathOfLowestCostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB556BD01EFA03FF00F43CEC /* PathOfLowestCostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathOfLowestCostUITests.swift; sourceTree = "<group>"; };
 		FB556BD21EFA03FF00F43CEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB556BDE1EFA046500F43CEC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				FB556BB01EFA03FF00F43CEC /* AppDelegate.swift */,
-				FB556BB21EFA03FF00F43CEC /* ViewController.swift */,
+				FB556BDE1EFA046500F43CEC /* MainViewController.swift */,
 				FB556BB41EFA03FF00F43CEC /* Main.storyboard */,
 				FB556BB71EFA03FF00F43CEC /* Assets.xcassets */,
 				FB556BB91EFA03FF00F43CEC /* LaunchScreen.storyboard */,
@@ -256,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB556BB31EFA03FF00F43CEC /* ViewController.swift in Sources */,
+				FB556BDF1EFA046500F43CEC /* MainViewController.swift in Sources */,
 				FB556BB11EFA03FF00F43CEC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P6FUQ3HBKP;
 				INFOPLIST_FILE = PathOfLowestCost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.photon.PathOfLowestCost;
@@ -432,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = P6FUQ3HBKP;
 				INFOPLIST_FILE = PathOfLowestCost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.photon.PathOfLowestCost;
