@@ -10,11 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-//    let matrixArray = [[3, 6, 5, 8], [4, 1, 9, 4], [1, 8, 3, 1], [2, 2, 9, 3], [8, 7, 9, 2]]
-    let matrixArray = [[13, 6, 5, 8], [4, 1, 9, 4], [11, 8, 3, 1], [2, 2, 9, 3], [8, 7, 9, 2]]
-//    let matrixArray = [[3, 6, 5, 8]]
-//    let matrixArray = [[3], [9], [23], [2], [8], [6]]
-//    let matrixArray = [[3, 4, 1, 2, 8, 6], [6, 1, 8, 2, 7, 4], [5, 9, 3, 9, 9, 5], [8, 4, 1, 3, 2, 6]]
+    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var displayTextView: UITextView!
+    
+    //    let matrixArray = [[3, 6, 5, 8], [4, 1, 9, 4], [1, 8, 3, 1], [2, 2, 9, 3], [8, 7, 9, 2]]
+
+    var matrixArray:[[Int]] = []
     var noOfColumns = 0
     var noOfRows = 0
     var totalCost:Int = 0
@@ -25,15 +26,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        noOfColumns  = matrixArray.count
-        if let rows = matrixArray.first?.count {
-             noOfRows = rows
-        }
-        
         findPath()
-        
         // Do any additional setup after loading the view.
     }
     
@@ -90,6 +83,7 @@ class MainViewController: UIViewController {
         
         var columnIndex = 0
         var evaluationArray:[Int] = matrixArray[columnIndex]
+        var tempArray:[Int] = matrixArray[columnIndex]
         
         repeat {
             
@@ -112,23 +106,6 @@ class MainViewController: UIViewController {
             columnIndex += 1
             print("columnIndex : \(columnIndex)")
         } while columnIndex < noOfColumns
-        
-        for columnIndex in stride(from: 0, to: noOfColumns, by: 1) {
-            
-            if let lowestCost =  matrixArray[columnIndex].min(),  let lowestCostRowIndex = matrixArray[columnIndex].index(of:lowestCost) {
-                if columnIndex == 0 {
-                    
-                } else if columnIndex == noOfColumns-1 {
-                    
-                } else {
-                    
-                }
-            }
-            
-            for rowIndex in stride(from: 0, to: noOfRows, by: 1) {
-                print("\(rowIndex), \(columnIndex)")
-            }
-        }
     }
     
     func printResults() {
@@ -141,6 +118,29 @@ class MainViewController: UIViewController {
     }
     
 
+    @IBAction func enterData(_ sender: Any) {
+        if let columnIntArray = dateTextField.text?.components(separatedBy: ",").flatMap({ Int($0) })  {
+            matrixArray.append(columnIntArray)
+            if noOfColumns == 0 {
+                noOfRows = matrixArray[noOfColumns].count
+            }
+//            matrixArray[noOfColumns] = columnIntArray
+            if matrixArray[noOfColumns].count != noOfRows {
+                isSuccess = false
+                printResults()
+                return
+            }
+            noOfColumns += 1
+        }
+        
+        displayTextView.text = "\(matrixArray)"
+    }
+    
+    
+    @IBAction func FindPath(_ sender: Any) {
+        findPath()
+    }
+    
     /*
     // MARK: - Navigation
 

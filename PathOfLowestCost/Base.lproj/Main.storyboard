@@ -5,8 +5,15 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GillSans.ttc">
+            <string>GillSans</string>
+            <string>GillSans-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -19,11 +26,115 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Path Of Lowest Cost" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysc-Bo-jEE">
+                                <rect key="frame" x="81" y="3" width="213" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ti6-00-o90"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="23"/>
+                                <color key="textColor" red="0.47775849069999998" green="0.74072697080000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter data by columns, seperated by commas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bM0-Bw-VYJ">
+                                <rect key="frame" x="0.0" y="70" width="375" height="20"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                <color key="textColor" red="0.47775849069999998" green="0.74072697080000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Itw-Qf-utb">
+                                <rect key="frame" x="39" y="120" width="297" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNV-9o-Wuu">
+                                <rect key="frame" x="0.0" y="222" width="375" height="232"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Dr-gl-2hX">
+                                        <rect key="frame" x="8" y="8" width="359" height="215"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.47775849069999998" green="0.74072697080000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6Dr-gl-2hX" secondAttribute="bottom" constant="9" id="BeA-Uq-DdX"/>
+                                    <constraint firstItem="6Dr-gl-2hX" firstAttribute="top" secondItem="qNV-9o-Wuu" secondAttribute="top" constant="8" id="DZZ-nT-VXA"/>
+                                    <constraint firstItem="6Dr-gl-2hX" firstAttribute="leading" secondItem="qNV-9o-Wuu" secondAttribute="leading" constant="8" id="ENS-xN-rTr"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Dr-gl-2hX" secondAttribute="trailing" constant="8" id="g3z-AK-p8k"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rM-GK-rah">
+                                <rect key="frame" x="132" y="169" width="110" height="36"/>
+                                <color key="backgroundColor" red="0.47775849069999998" green="0.74072697080000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="lBc-KQ-vzJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="20"/>
+                                <state key="normal" title="Enter">
+                                    <color key="titleColor" red="0.1334315727" green="0.16952853849999999" blue="0.76523042929999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Wb-eN-TT6"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hgN-7J-qhS">
+                                <rect key="frame" x="58" y="542" width="259" height="96"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMd-H5-FWh">
+                                <rect key="frame" x="32" y="480" width="311" height="36"/>
+                                <color key="backgroundColor" red="0.47775849069999998" green="0.74072697080000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="311" id="JfL-Yn-32g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="20"/>
+                                <state key="normal" title="Find Path of Lowest Cost">
+                                    <color key="titleColor" red="0.1334315727" green="0.16952853849999999" blue="0.76523042929999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="FindPath:" destination="BYZ-38-t0r" eventType="touchUpInside" id="heo-V6-njD"/>
+                                    <action selector="enterData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nKZ-HX-Yaj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10169780415622033" green="0.15266053788533768" blue="0.46410799264907832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0rM-GK-rah" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0P3-Vm-eF6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qNV-9o-Wuu" secondAttribute="bottom" constant="213" id="32C-m4-Pfe"/>
+                            <constraint firstItem="bM0-Bw-VYJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7tV-al-fkc"/>
+                            <constraint firstItem="0rM-GK-rah" firstAttribute="top" secondItem="Itw-Qf-utb" secondAttribute="bottom" constant="19" id="BHA-9Z-2dY"/>
+                            <constraint firstItem="Itw-Qf-utb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="CVJ-e2-bhg"/>
+                            <constraint firstItem="dMd-H5-FWh" firstAttribute="centerX" secondItem="qNV-9o-Wuu" secondAttribute="centerX" id="DGC-cn-wgS"/>
+                            <constraint firstAttribute="trailing" secondItem="qNV-9o-Wuu" secondAttribute="trailing" id="Ggd-zl-qek"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ysc-Bo-jEE" secondAttribute="trailing" constant="65" id="Iqe-Tc-fQV"/>
+                            <constraint firstAttribute="trailing" secondItem="bM0-Bw-VYJ" secondAttribute="trailing" id="JaJ-sg-g5i"/>
+                            <constraint firstItem="hgN-7J-qhS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="42" id="TfU-pQ-Xgo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Itw-Qf-utb" secondAttribute="trailing" constant="23" id="XbY-6Q-c7c"/>
+                            <constraint firstItem="dMd-H5-FWh" firstAttribute="top" secondItem="qNV-9o-Wuu" secondAttribute="bottom" constant="26" id="Xce-zb-gl7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hgN-7J-qhS" secondAttribute="bottom" constant="29" id="cxK-K5-pe4"/>
+                            <constraint firstItem="qNV-9o-Wuu" firstAttribute="top" secondItem="0rM-GK-rah" secondAttribute="bottom" constant="17" id="ekE-nW-7Gu"/>
+                            <constraint firstItem="dMd-H5-FWh" firstAttribute="centerX" secondItem="hgN-7J-qhS" secondAttribute="centerX" id="ktc-ZH-kXN"/>
+                            <constraint firstItem="bM0-Bw-VYJ" firstAttribute="top" secondItem="Ysc-Bo-jEE" secondAttribute="bottom" constant="7" id="rrC-Ol-0jY"/>
+                            <constraint firstItem="qNV-9o-Wuu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="spX-b6-rIn"/>
+                            <constraint firstItem="hgN-7J-qhS" firstAttribute="top" secondItem="dMd-H5-FWh" secondAttribute="bottom" constant="26" id="vht-6v-gj0"/>
+                            <constraint firstItem="Itw-Qf-utb" firstAttribute="top" secondItem="bM0-Bw-VYJ" secondAttribute="bottom" constant="30" id="wiP-SZ-QCi"/>
+                            <constraint firstItem="Ysc-Bo-jEE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-17" id="z3M-mO-1DO"/>
+                            <constraint firstItem="Ysc-Bo-jEE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="65" id="zyp-1v-mqI"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateTextField" destination="Itw-Qf-utb" id="whk-Lp-AcG"/>
+                        <outlet property="displayTextView" destination="6Dr-gl-2hX" id="pPd-c1-asy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="105.69715142428787"/>
         </scene>
     </scenes>
 </document>
