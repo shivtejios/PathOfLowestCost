@@ -10,11 +10,13 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var dataTextField: UITextField!
     @IBOutlet weak var displayTextView: UITextView!
     
-    //    let matrixArray = [[3, 6, 5, 8], [4, 1, 9, 4], [1, 8, 3, 1], [2, 2, 9, 3], [8, 7, 9, 2]]
-
+    @IBOutlet weak var IsCompletePathLbl: UILabel!
+    @IBOutlet weak var totalCostLbl: UILabel!
+    @IBOutlet weak var pathLbl: UILabel!
+    
     var matrixArray:[[Int]] = []
     var noOfColumns = 0
     var noOfRows = 0
@@ -23,15 +25,16 @@ class MainViewController: UIViewController {
     var resultPathValueArray:[Int] = []
     let MaxAllowedCost = 50
     var isSuccess:Bool = false
+    var lowestCostRowIndex = 0
     
+    // MARK: - View life cycle method
     override func viewDidLoad() {
         super.viewDidLoad()
-        findPath()
         // Do any additional setup after loading the view.
     }
     
+    //MARK:- Path of lowest cost methods
     func findPath() {
-        
         if noOfColumns == 1 {
             singleColumn()
         } else if noOfRows == 1 {
@@ -44,7 +47,7 @@ class MainViewController: UIViewController {
     func isPathSuccess() -> Bool {
         let totalCostValue = resultPathValueArray.reduce(0, +)
         
-        if totalCostValue > MaxAllowedCost || resultPathValueArray.count != noOfColumns{
+        if totalCostValue > MaxAllowedCost || resultPathValueArray.count != noOfColumns || resultPathValueArray.first == 0 {
             isSuccess = false
         } else {
             isSuccess = true
@@ -52,10 +55,15 @@ class MainViewController: UIViewController {
         return isSuccess
     }
     
+    func totalPathCost() -> Int{
+        return resultPathValueArray.reduce(0, +)
+    }
+    
+    // MARK: - Different scenarios of matrices
     func singleRow() {
         for cost in matrixArray {
             totalCost += cost[0]
-            if totalCost>50 {
+            if totalCost>MaxAllowedCost {
                 totalCost -= cost[0]
                 isSuccess = false
                 break
@@ -64,91 +72,143 @@ class MainViewController: UIViewController {
             }
         }
         resultPathIndexArray = Array(repeating: noOfRows, count: resultPathValueArray.count)
-        printResults()
+        displayResults()
     }
     
     func singleColumn() {
         if let cost = matrixArray.first?.min() {
             totalCost = cost
-            resultPathValueArray.append(cost)
+            if totalCost > MaxAllowedCost {
+                totalCost = 0
+                resultPathValueArray.append(0)
+            } else {
+                if let index = matrixArray.first?.index(of: totalCost) {
+                    resultPathIndexArray.append(index+1)
+                }
+                resultPathValueArray.append(cost)
+            }
         }
-        if let index = matrixArray.first?.index(of: totalCost) {
-            resultPathIndexArray.append(index+1)
-        }
-        
-        printResults()
+        displayResults()
     }
     
     func multipleRowsAndColumns() {
         
         var columnIndex = 0
-        var evaluationArray:[Int] = matrixArray[columnIndex]
-        var tempArray:[Int] = matrixArray[columnIndex]
+        var evaluationValueArray:[Int] = matrixArray[columnIndex]
+        var evaluationIndexArray:[Int]
         
         repeat {
-            
-            if let lowestCost =  evaluationArray.min(),  let lowestCostRowIndex = matrixArray[columnIndex].index(of:lowestCost) {
-                if columnIndex == 0 {
-                    resultPathValueArray.append(lowestCost)
-                    resultPathIndexArray.append(lowestCostRowIndex)
+            if let lowestCost =  evaluationValueArray.min()   {
+                if totalPathCost() < MaxAllowedCost {
+                    if columnIndex == 0 {
+                        if let lowestCostIndex = matrixArray[columnIndex].index(of:lowestCost) { lowestCostRowIndex =  lowestCostIndex}
+                        resultPathValueArray.append(lowestCost)
+                        resultPathIndexArray.append(lowestCostRowIndex+1)
+                    } else {
+                        if lowestCostRowIndex == 0 {
+                            let topNextValue = matrixArray[columnIndex][noOfRows-1]
+                            let centerNextValue = matrixArray[columnIndex][lowestCostRowIndex]
+                            let bottomNextValue = matrixArray[columnIndex][lowestCostRowIndex+1]
+                            
+                            evaluationValueArray = [topNextValue, centerNextValue, bottomNextValue]
+                            evaluationIndexArray = [noOfRows-1, lowestCostRowIndex, lowestCostRowIndex+1]
+                        } else if lowestCostRowIndex == (noOfRows - 1) {
+                            let topNextValue = matrixArray[columnIndex][lowestCostRowIndex-1]
+                            let centerNextValue = matrixArray[columnIndex][lowestCostRowIndex]
+                            let bottomNextValue = matrixArray[columnIndex][0]
+                            
+                            evaluationValueArray = [topNextValue, centerNextValue, bottomNextValue]
+                            evaluationIndexArray = [lowestCostRowIndex-1, lowestCostRowIndex, 0]
+                        } else {
+                            let topNextValue = matrixArray[columnIndex][lowestCostRowIndex-1]
+                            let centerNextValue = matrixArray[columnIndex][lowestCostRowIndex]
+                            let bottomNextValue = matrixArray[columnIndex][lowestCostRowIndex+1]
+                            
+                            evaluationValueArray = [topNextValue, centerNextValue, bottomNextValue]
+                            evaluationIndexArray = [lowestCostRowIndex-1, lowestCostRowIndex, lowestCostRowIndex+1]
+                        }
+                        
+                        if let lowerCost = evaluationValueArray.min(), let evaluationIndex = evaluationValueArray.index(of: lowerCost) {
+                            lowestCostRowIndex = evaluationIndexArray[evaluationIndex]
+                            resultPathValueArray.append(lowerCost)
+                            resultPathIndexArray.append(lowestCostRowIndex+1)
+                        }
+                    }
+                } else {
+                    resultPathIndexArray.removeLast()
+                    resultPathValueArray.removeLast()
+                    break
                 }
-                
-                let topNextValue = matrixArray[columnIndex+1][lowestCostRowIndex-1]
-                let nextValue = matrixArray[columnIndex+1][lowestCostRowIndex]
-                let bottomNextValue = matrixArray[columnIndex+1][lowestCostRowIndex+1]
-                evaluationArray = [topNextValue, nextValue, bottomNextValue]
-                
-                if let lowerCost = evaluationArray.min(), let lowerCostRowIndex = matrixArray[columnIndex+1].index(of: lowerCost) {
-                    resultPathValueArray.append(lowerCost)
-                    resultPathIndexArray.append(lowerCostRowIndex)
-                }
+                columnIndex += 1
             }
-            columnIndex += 1
-            print("columnIndex : \(columnIndex)")
         } while columnIndex < noOfColumns
-    }
-    
-    func printResults() {
-        print("Path success : \(isPathSuccess())\nTotal Cost : \(totalCost)\nPath : \(resultPathIndexArray)")
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    @IBAction func enterData(_ sender: Any) {
-        if let columnIntArray = dateTextField.text?.components(separatedBy: ",").flatMap({ Int($0) })  {
-            matrixArray.append(columnIntArray)
-            if noOfColumns == 0 {
-                noOfRows = matrixArray[noOfColumns].count
-            }
-//            matrixArray[noOfColumns] = columnIntArray
-            if matrixArray[noOfColumns].count != noOfRows {
-                isSuccess = false
-                printResults()
-                return
-            }
-            noOfColumns += 1
-        }
         
-        displayTextView.text = "\(matrixArray)"
+        displayResults()
     }
     
+    //MARK: - Display results
+    func displayResults() {
+        print("Path success : \(isPathSuccess())\nTotal Cost : \(totalPathCost())\nPath : \(resultPathIndexArray)")
+        
+        IsCompletePathLbl.text = isPathSuccess().description
+        totalCostLbl.text = totalPathCost().description
+        pathLbl.text = "\(resultPathIndexArray)"
+    }
     
-    @IBAction func FindPath(_ sender: Any) {
+    // MARK: - Validate the entered test
+    func checkForAlphabets(enteredString:String) -> Bool {
+        
+        let letters = CharacterSet.letters
+        let digits = CharacterSet.decimalDigits
+        
+        var letterCount = 0
+        var digitCount = 0
+        
+        for uni in enteredString.unicodeScalars {
+            if letters.contains(uni) {
+                letterCount += 1
+            } else if digits.contains(uni) {
+                digitCount += 1
+            }
+        }
+        if letterCount > 0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    // MARK:- IBAction Methods
+    @IBAction func enterData(_ sender: Any) {
+        
+        if let enteredText = dataTextField.text {
+            if checkForAlphabets(enteredString: enteredText) && !enteredText.isEmpty {
+                let columnIntArray = enteredText.components(separatedBy: ",").flatMap({ Int($0) })
+                matrixArray.append(columnIntArray)
+                if noOfColumns == 0 {
+                    noOfRows = matrixArray[noOfColumns].count
+                }
+                if matrixArray[noOfColumns].count != noOfRows {
+                    let alert = UIAlertController(title: "Please enter same number of row values for all columns", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    matrixArray.removeLast()
+                    dataTextField.text = ""
+                    return
+                }
+                noOfColumns += 1
+                displayTextView.text = "\(matrixArray)"
+            } else {
+                let alert = UIAlertController(title: "Please enter valid values", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        dataTextField.text = ""
+    }
+    
+    @IBAction func findPath(_ sender: Any) {
         findPath()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+

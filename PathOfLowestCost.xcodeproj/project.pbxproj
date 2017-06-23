@@ -17,6 +17,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FB10347E1EFCF6DF00CEEC41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB556BA51EFA03FF00F43CEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB556BAC1EFA03FF00F43CEC;
+			remoteInfo = PathOfLowestCost;
+		};
 		FB556BC21EFA03FF00F43CEC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FB556BA51EFA03FF00F43CEC /* Project object */;
@@ -34,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB1034791EFCF6DF00CEEC41 /* PathOfLowestCostUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PathOfLowestCostUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB556BAD1EFA03FF00F43CEC /* PathOfLowestCost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PathOfLowestCost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB556BB01EFA03FF00F43CEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB556BB51EFA03FF00F43CEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,6 +58,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FB1034761EFCF6DF00CEEC41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FB556BAA1EFA03FF00F43CEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,6 +105,7 @@
 				FB556BAD1EFA03FF00F43CEC /* PathOfLowestCost.app */,
 				FB556BC11EFA03FF00F43CEC /* PathOfLowestCostTests.xctest */,
 				FB556BCC1EFA03FF00F43CEC /* PathOfLowestCostUITests.xctest */,
+				FB1034791EFCF6DF00CEEC41 /* PathOfLowestCostUITest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +144,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FB1034781EFCF6DF00CEEC41 /* PathOfLowestCostUITest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB1034801EFCF6DF00CEEC41 /* Build configuration list for PBXNativeTarget "PathOfLowestCostUITest" */;
+			buildPhases = (
+				FB1034751EFCF6DF00CEEC41 /* Sources */,
+				FB1034761EFCF6DF00CEEC41 /* Frameworks */,
+				FB1034771EFCF6DF00CEEC41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FB10347F1EFCF6DF00CEEC41 /* PBXTargetDependency */,
+			);
+			name = PathOfLowestCostUITest;
+			productName = PathOfLowestCostUITest;
+			productReference = FB1034791EFCF6DF00CEEC41 /* PathOfLowestCostUITest.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		FB556BAC1EFA03FF00F43CEC /* PathOfLowestCost */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB556BD51EFA03FF00F43CEC /* Build configuration list for PBXNativeTarget "PathOfLowestCost" */;
@@ -191,6 +225,10 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Photon;
 				TargetAttributes = {
+					FB1034781EFCF6DF00CEEC41 = {
+						CreatedOnToolsVersion = 9.0;
+						TestTargetID = FB556BAC1EFA03FF00F43CEC;
+					};
 					FB556BAC1EFA03FF00F43CEC = {
 						CreatedOnToolsVersion = 9.0;
 					};
@@ -220,11 +258,19 @@
 				FB556BAC1EFA03FF00F43CEC /* PathOfLowestCost */,
 				FB556BC01EFA03FF00F43CEC /* PathOfLowestCostTests */,
 				FB556BCB1EFA03FF00F43CEC /* PathOfLowestCostUITests */,
+				FB1034781EFCF6DF00CEEC41 /* PathOfLowestCostUITest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FB1034771EFCF6DF00CEEC41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FB556BAB1EFA03FF00F43CEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +298,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FB1034751EFCF6DF00CEEC41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FB556BA91EFA03FF00F43CEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,6 +333,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FB10347F1EFCF6DF00CEEC41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB556BAC1EFA03FF00F43CEC /* PathOfLowestCost */;
+			targetProxy = FB10347E1EFCF6DF00CEEC41 /* PBXContainerItemProxy */;
+		};
 		FB556BC31EFA03FF00F43CEC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FB556BAC1EFA03FF00F43CEC /* PathOfLowestCost */;
@@ -312,6 +370,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FB1034811EFCF6DF00CEEC41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PathOfLowestCostUITest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.photon.PathOfLowestCostUITest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PathOfLowestCost;
+			};
+			name = Debug;
+		};
+		FB1034821EFCF6DF00CEEC41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PathOfLowestCostUITest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.photon.PathOfLowestCostUITest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PathOfLowestCost;
+			};
+			name = Release;
+		};
 		FB556BD31EFA03FF00F43CEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -504,6 +588,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FB1034801EFCF6DF00CEEC41 /* Build configuration list for PBXNativeTarget "PathOfLowestCostUITest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB1034811EFCF6DF00CEEC41 /* Debug */,
+				FB1034821EFCF6DF00CEEC41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FB556BA81EFA03FF00F43CEC /* Build configuration list for PBXProject "PathOfLowestCost" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -520,6 +613,7 @@
 				FB556BD71EFA03FF00F43CEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB556BD81EFA03FF00F43CEC /* Build configuration list for PBXNativeTarget "PathOfLowestCostTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +622,7 @@
 				FB556BDA1EFA03FF00F43CEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB556BDB1EFA03FF00F43CEC /* Build configuration list for PBXNativeTarget "PathOfLowestCostUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +631,7 @@
 				FB556BDD1EFA03FF00F43CEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
